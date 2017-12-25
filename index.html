@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+	</head>
+
+	<body>
+		<div class="login">
+			<div class="container center-block" style="margin: 100px auto 0; width: 350px;">
+				<h1 class="text-info">管理员登录 <small>1703A</small></h1>
+				<form class='center-block' style="margin-top: 50px;">
+					<div class="form-group">
+						<div class='input-group'>
+							<div class='input-group-addon'>username</div>
+							<input type="text" class="form-control user inp" placeholder="用户名" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class='input-group'>
+							<div class='input-group-addon'>password</div>
+							<input type="password" class="form-control pass inp" placeholder="密码" />
+						</div>
+					</div>
+					<button type="button" class="btn btn-default btn-info btn-block btn-login" data-toggle="modal" data-target=".bs-example-modal-sm">登录</button>
+				</form>
+				<div class="modal fade bs-example-modal-sm danger" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+					<div class="modal-dialog modal-sm" role="document">
+						<div class="modal-content">
+							<p style="padding: 10px 0 0 15px;" class="text-danger hint"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				var ljyurl = "http://localhost:8000/user/";
+				$("body").on("click", ".btn-login", function() {
+					var user = $(".user").val();
+					var pass = $(".pass").val();
+					if(user == "") {
+						$(".user").parent("div").addClass("has-error");
+						$(".hint").html("请输入用户名");
+					} else if(pass == "") {
+						$(".user").parent("div").removeClass("has-error");
+						$(".pass").parent("div").addClass("has-error");
+						$(".hint").html("请输入密码");
+					} else {
+						$(".pass").parent("div").removeClass("has-error");
+						$.ajax({
+							url: ljyurl + "login",
+							type: "post",
+							data: {
+								user: user,
+								pass: pass
+							},
+							success: function(e) {
+								if(e == "登录成功") {
+									$(".danger").addClass("hide");
+									$(".modal-backdrop").addClass("hide");
+									sessionStorage.setItem(user, pass);
+									window.location.replace("http://localhost:8000/release.html");
+								} else {
+									$("input").parent("div").addClass("has-error");
+									$(".hint").html(e);
+								}
+							},
+							error: function(e) {
+								console.log(e);
+							}
+						})
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

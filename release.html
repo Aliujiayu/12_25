@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Bootstrap 101 Template</title>
+		<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+	</head>
+
+	<body>
+		<div class="container center-block" style="margin: 30px auto 0;">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">1703A人员记录</button>
+			<table class="table table-bordered text-center">
+				<thead style="font-weight: bold;">
+					<tr>
+						<td>序号</td>
+						<td>照片</td>
+						<td>姓名</td>
+						<td>性别</td>
+						<td>年龄</td>
+						<td>出生日期</td>
+						<td>学历</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody class="tbody">
+
+				</tbody>
+			</table>
+			<div class="modal fade" tabindex="-1" role="dialog" id="look">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content look" style="padding: 20px;">
+
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" tabindex="-1" role="dialog" id="remove">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h3 class="text-danger">删除</h3>
+						</div>
+						<div class="modal-body">
+							<h4>确定要删除吗？</h4>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							<button type="button" class="btn btn-primary" onclick="del()" data-dismiss="modal">确认</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade hq" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="exampleModalLabel">学生信息</h4>
+						</div>
+						<div class="modal-body center-block">
+							<form class="form">
+								<div class="form-group">
+
+									<label for="img">
+											<div class='box img-circle has-success' style="width:100px; height:100px; border: 1px solid coral; cursor: pointer;"></div>
+									</label>
+									<input type="file" class="form-control img hide" id="img" />
+								</div>
+								<div class="form-group">
+									<div class='input-group'>
+										<div class='input-group-addon'>序号</div>
+										<input type="text" class="form-control num" placeholder="num" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class='input-group'>
+										<div class='input-group-addon'>姓名</div>
+										<input type="text" class="form-control name" placeholder="name" />
+									</div>
+								</div>
+								<div class="form-group">
+									<div class='input-group'>
+										<div class='input-group-addon'>年龄</div>
+										<input type="number" class="form-control age" disabled placeholder="age" />
+									</div>
+								</div>
+								<div class="form-group list-inline">
+									<h4>性别</h4>
+									<select class="btn-block sex" style="margin: 10px 0;">
+										<option value="男">男</option>
+										<option value="女">女</option>
+									</select>
+									<div class="form-group">
+										<h4>学历</h4>
+										<select class="btn-block background" style="margin: 10px 0;">
+											<option value="小学">小学</option>
+											<option value="初中">初中</option>
+											<option value="中专/高中">中专/高中</option>
+											<option value="专科">专科</option>
+											<option value="本科">本科</option>
+											<option value="硕士研究生">硕士研究生</option>
+											<option value="博士研究生">博士研究生</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<div class='input-group'>
+											<div class='input-group-addon'>出生日期</div>
+											<input type="date" class="form-control birthday" placeholder="birthday" />
+										</div>
+									</div>
+							</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default btn-off" data-dismiss="modal">取消</button>
+								<button type="button" class="btn btn-primary btn-go" data-toggle="modal" data-target=".bs-example-modal-sm">确认</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+			<script src="node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+			<script src="js/user.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
